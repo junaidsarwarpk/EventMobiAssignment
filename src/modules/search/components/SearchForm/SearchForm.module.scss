@@ -1,0 +1,23 @@
+@import "../../../../styles/variables.scss";
+
+.searchInput {
+    width: 30vw;
+    height: 8vh;
+    border: none;
+    border-radius: 6px;
+    margin-top: 8px;
+    font-size: 1.2vw;
+    color: $input-color;
+    padding: 0 4px;
+
+    // some stock code to reset the input
+    border:none;
+    background-image:none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    &:focus, &:active {
+        outline: none;
+    }
+}
