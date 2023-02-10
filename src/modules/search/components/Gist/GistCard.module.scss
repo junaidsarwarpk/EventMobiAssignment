@@ -1,0 +1,65 @@
+@import "../../../../styles/variables.scss";
+
+.root {
+    background-color: $card-background;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: background-color 0.2s linear;
+    &:hover {
+        background-color: lighten($card-background, 10%);
+    }
+}
+.avatarImage {
+    width: 100%;
+}
+
+.detailsSection {
+    padding: 8px;
+    line-height: 1.5;
+}
+
+.description {
+    overflow-wrap: break-word;
+    text-align: left;
+}
+
+.authorLink {
+    text-align: left;
+    margin-top: 12px;
+
+    :global(a) {
+        text-decoration: underline;
+        color: inherit;
+
+        &:hover, &:visited {
+            text-decoration: underline;
+            color: inherit;
+        }
+            
+    }
+}
+
+.fileTagContainer {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.filesLabel {
+    flex-basis: 100%;
+    text-align: left;
+}
+
+.forksContainer {
+    margin-top: 12px;
+}
+
+.forksLabel {
+    text-align: left;
+    margin-top: 8px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

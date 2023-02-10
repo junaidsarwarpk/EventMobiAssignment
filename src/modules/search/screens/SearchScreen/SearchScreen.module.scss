@@ -11,3 +11,15 @@
 .welcomeMessage {
     font-size: 1.4vw;
 }
+
+.gistsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+
+    :global(.gist-card) {
+        flex-basis: 300px;
+        width: 300px;
+    }
+}

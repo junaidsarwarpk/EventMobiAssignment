@@ -1,0 +1,18 @@
+.root {
+    display: flex;
+    gap: 4px;
+    margin: 4px 0;
+
+    text-decoration: underline;
+    color: inherit;
+
+    &:hover, &:visited {
+        text-decoration: underline;
+        color: inherit;
+    }
+}
+
+.avatar {
+    max-width: 30px;
+    border-radius: 15px;
+}
