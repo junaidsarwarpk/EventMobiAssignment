@@ -5,6 +5,7 @@ import { MainLayout, SearchScreen } from './routeScreens';
 import "./global.scss";
 
 function App() {
+  console.log("test")
   return (
     <Router>
       <Suspense fallback={<div style={{ textAlign: 'center' }}>...</div>}>

@@ -1,0 +1,13 @@
+@import "../../../../styles/variables.scss";
+
+.root {
+    padding: 4px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover, &:visited {
+        text-decoration: none;
+        color: inherit;
+    }
+}
