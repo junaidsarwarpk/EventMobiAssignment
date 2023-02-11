@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { GistFile, GistFiltTypes } from "../Gist/gist.models";
 import classes from "./GistFileTag.module.scss";
 
@@ -13,7 +13,7 @@ const FILE_COLORS = {
 
 export const GistFileTag = ({ file }: { file: GistFile }) => {
 
-    return <a href={file.url} target="_blank" style={{ backgroundColor: FILE_COLORS[file.type] }} className={classes.root}>
+    return <a href={file.url} target="_blank" rel="noreferrer" style={{ backgroundColor: FILE_COLORS[file.type] }} className={classes.root}>
         {file.name}
     </a>
 }

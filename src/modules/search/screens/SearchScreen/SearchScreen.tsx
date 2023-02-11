@@ -9,6 +9,7 @@ import classes from "./SearchScreen.module.scss";
 
 const SearchScreen = () => {
     const [gists, setGists] = useState<Gist[]>([]);
+    const [isLoading, setLoading] = useState(false);
     const navigate = useNavigate();
     const [params] = useSearchParams();
 
@@ -17,12 +18,15 @@ const SearchScreen = () => {
     }), [params]);
 
     useEffect(() => {
-        if (values.username) {
-            httpUtilities.get(`users/${values.username}/gists?per_page=3000`).then(response => {
+        if (values.username && !isLoading) {
+            setLoading(p => !p);
+            setGists([]);
+            httpUtilities.get(`users/${values.username}/gists?per_page=100`).then(response => {
+                setLoading(p => !p);
                 if (!response.isSuccess) {
                     alert(response.data.message)
                 } else {
-                    const gists = response.data.map((rawGist: { [key: string]: unknown }) => GistAdapter(rawGist));
+                    const gists = response.data.map((rawGist: GenericObject) => GistAdapter(rawGist));
                     setGists(gists);
                 }
             })
@@ -36,7 +40,7 @@ const SearchScreen = () => {
                 search: `?username=${value}`
             })
         }
-    }, []);
+    }, [navigate]);
 
 
 
@@ -46,6 +50,7 @@ const SearchScreen = () => {
             <div>
                 <SearchForm onSubmit={handleSearch} {...values} />
             </div>
+            {isLoading && <div>Loading...</div>}
             <div className={classes.gistsContainer}>
                 {gists.map((gist, index) => <GistCard key={`gist-${index}`} gist={gist} />)}
             </div>
