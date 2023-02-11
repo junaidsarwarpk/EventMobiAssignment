@@ -7,7 +7,7 @@ const HTTP_STATUS_CODES = {
 
 export interface HttpResponse {
     isSuccess: boolean,
-    data: {[key: string]: unknown}
+    data: GenericObject
 }
 
 export const get = (endpoint: string) => {

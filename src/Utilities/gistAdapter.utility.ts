@@ -1,6 +1,6 @@
 import { Gist, GistFile, GistFiltTypes, SUPPORTED_FILE_TYPES } from "../modules/search/components/Gist/gist.models";
 
-export const GistAdapter = (input: {[key: string]: any}): Gist => {
+export const GistAdapter = (input: GenericObject): Gist => {
     const fileKeys = Object.keys(input.files);
 
     const files = fileKeys.map((file): GistFile => {

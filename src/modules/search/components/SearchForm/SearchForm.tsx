@@ -1,10 +1,10 @@
-import React, { ChangeEvent, FormEvent, FormEventHandler, useCallback, useReducer, useState } from "react";
+import React, { ChangeEvent, FormEvent, useCallback, useState } from "react";
 import { SearchFormProps } from "./SearchForm.models";
 import classes from "./SearchForm.module.scss";
 
 export const SearchForm = ({ username, onSubmit }: SearchFormProps) => {
 
-    const [formState, setFormState] = useState({username: username ?? ''});
+    const [formState, setFormState] = useState({ username: username ?? '' });
 
 
     const handleSubmit = useCallback((event: FormEvent<HTMLFormElement>) => {
@@ -15,11 +15,10 @@ export const SearchForm = ({ username, onSubmit }: SearchFormProps) => {
     }, [onSubmit]);
 
     const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-        console.log({name: event.target.name, value: event.target.value});
         setFormState(previousValue => ({ ...previousValue, [event.target.name]: event.target.value }));
     }, [])
 
     return <form autoComplete="false" onSubmit={handleSubmit}>
-    <input type="text" value={formState.username} onChange={handleChange} name="username" autoComplete="false" className={classes.searchInput} />
-</form>
+        <input type="text" placeholder="Type in the username and press enter" value={formState.username} onChange={handleChange} name="username" autoComplete="false" className={classes.searchInput} />
+    </form>
 }

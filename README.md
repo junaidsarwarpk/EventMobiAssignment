@@ -1,44 +1,51 @@
-### FYI: THE PROJECT IS IN WIP
+#### EventMobi code challenge
 
-## Available Scripts
+### ****Note: This project was created from scratch up using CRA and no 3rd party library (i.e.) ANTD/React Bootstrap/ React Material was used, nor any css/layout helper like bootstrap/tailwind etc was used, the structure and the layout was build from scratch by @junaidsarwarpk****
 
-In the project directory, you can run:
+### What is covered
 
-### `npm start`
+- Load gists by username
+- Render gist card with details: \
+   -- Description
+   -- Author avatar
+   -- Author name with link to author's profile
+   -- Files list with known files having specific color and generic files with a generic color
+   -- Link on file tag (which takes you to file path)
+   -- Feature to load last 3 forks
+   -- Last 3 forks with username linked to user's profile and user's avatar (activated by clicking the label in the card)
+   -- Basic error handling (400 http errors etc)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### How to setup the app
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Clone the app
+- Run `npm install` on root folder
+- After that run npm run start
+- After the local server starts, go to `http://localhost:3000/` and enter the username
+- Click `Get last 3 forks` to load the last 3 users who forked this gist
 
-### `npm test`
+### What was not covered / future work
+Some of the optional functions/improvements were not covered in this project due to time limitation, few are mentioned below:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Pagination in gists
+    -- Gists API supports pagination and returns pagination information in `link` response header, we can extract that information and implement the lazy loading/pagination controls on the search screen
+- Store
+    -- Even though the role of store in this project scope is debatable but it was left out due to time limitation, I would write the store to cache the gists per user in order to avoid calls to network if the same user is searched again
+- Design improvements
+    -- The core focus of this solution is to build up a mini-application explain how a flexible project structure can be built, hence, the design kept minimalistic and further improvements can be made in the design
+- Forks page
+    -- We can have a dedicated page to display the fork details, the idea was skipped due to time limitation and the scope of the project
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Structure in bird eye view
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `src/layouts`: A directory where you can define the layouts of the project, for now, there is only one layout: `MainLayout`, the layout can be used to house the application with some global controls/design which will remain the same throughout the application, for example, a navigation can be defined inside the layout. The layout further loads the routes inside with `Outlet`.
+- `src/modules`: A directory to house the the different modules of the application, right now, we only have `search` module but we can define further modules inside this directory.
+- `src/modules/{moduleX}/components`: A directory per module where you can keep module-specific components, for example `SearchForm`.
+- `src/modules/{moduleX}/screens`: A directory per module where you can define the screens related to the module `{moduleX}`, for now, we only have `search` module and `SearchScreen`, further screens related to `search` module can be added here.
+- `src/styles`: A directory where we can keep the shared styles i.e. mixins, scss variables etc.
+- `src/Utilities`: A shared directory to house the general utilities like adapters, helper functions etc.
+- `src/global.scss`: A scss file where you can define the global styles, all other `scss` files in the project are modular files which are used to define the scoped-styles, hence, you don't need to worry about one `scss` file overriding the styles of another.
+- `src/routeScreens.ts`: A file which exports all the lazily loaded screens which can be further passed to the routes.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### PRs for improvements are welcomed.
+#### For further questions please reach out to me @ junaidsarwar.com / junaidsarwar001@gmail.com
